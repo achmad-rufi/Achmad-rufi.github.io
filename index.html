@@ -16,7 +16,7 @@
             --neon-purple: #bc13fe;
             --text-main: #ffffff;
             --text-dim: #a0a0a0;
-            --font-tech: 'Courier Prime', monospace; /* Font coding */
+            --font-tech: 'Courier Prime', monospace;
             --font-main: 'Segoe UI', sans-serif;
         }
 
@@ -29,16 +29,15 @@
             overflow-x: hidden;
         }
 
-        /* --- 2. BACKGROUND ANIMATION (Grid Listrik) --- */
-        .bg-grid {
+        /* --- 2. BACKGROUND PARTICLES --- */
+        #particles-js {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -1;
-            mask-image: radial-gradient(circle, black 30%, transparent 80%);
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            z-index: -10; /* Paling belakang */
+            top: 0;
+            left: 0;
         }
 
         /* --- 3. NAVBAR --- */
@@ -52,6 +51,7 @@
             top: 0;
             z-index: 100;
             border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+            background: rgba(5, 5, 5, 0.8);
         }
 
         .logo {
@@ -60,6 +60,11 @@
             color: var(--neon-cyan);
             text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
             font-family: var(--font-tech);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
         }
 
         .nav-links a {
@@ -78,26 +83,32 @@
             text-shadow: 0 0 8px var(--neon-cyan);
         }
 
-        /* --- 4. HERO SECTION --- */
+        /* --- 4. HERO SECTION & SOCIAL --- */
         .hero {
-            height: 90vh;
+            min-height: 90vh; /* Ubah jadi min-height agar fleksibel */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 50px 20px;
             position: relative;
         }
 
         .profile-pic {
-            width: 160px;
-            height: 160px;
+            width: 180px; /* Sedikit diperbesar */
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--neon-cyan);
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
-            margin-bottom: 20px;
+            border: 4px solid var(--neon-cyan);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.4);
+            margin-bottom: 25px;
+            animation: pulse-neon 3s infinite alternate;
+        }
+
+        @keyframes pulse-neon {
+            from { box-shadow: 0 0 20px rgba(0, 243, 255, 0.4); }
+            to { box-shadow: 0 0 50px rgba(0, 243, 255, 0.7); border-color: var(--neon-purple); }
         }
 
         .hero h1 {
@@ -116,16 +127,45 @@
         .typing-text {
             font-family: var(--font-tech);
             color: var(--neon-cyan);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 30px;
-            border-right: 2px solid var(--neon-cyan);
-            white-space: nowrap;
-            overflow: hidden;
-            width: 0;
-            animation: typing 3s steps(40, end) forwards, blink 0.75s step-end infinite;
         }
 
-        /* Tombol Neon */
+        /* Social Media Icons Baru */
+        .social-icons {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-icons a {
+            color: var(--text-dim);
+            font-size: 1.8rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--card-bg);
+        }
+
+        .social-icons a:hover {
+            color: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        /* Tombol Neon & CV */
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         .btn-glow {
             padding: 12px 35px;
             background: rgba(0, 243, 255, 0.05);
@@ -135,10 +175,12 @@
             cursor: pointer;
             transition: 0.3s;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
         }
 
         .btn-glow:hover {
@@ -146,19 +188,61 @@
             color: #000;
             box-shadow: 0 0 30px var(--neon-cyan);
         }
+        
+        .btn-purple {
+            color: var(--neon-purple);
+            border-color: var(--neon-purple);
+            background: rgba(188, 19, 254, 0.05);
+        }
+        .btn-purple:hover {
+            background: var(--neon-purple);
+            color: white;
+            box-shadow: 0 0 30px var(--neon-purple);
+        }
 
-        /* --- 5. PROJECTS SECTION --- */
+        /* --- 5. SECTIONS GENERAL --- */
         .section { padding: 100px 50px; }
+        .section-alt { background: rgba(255,255,255,0.02); } /* Background selang seling */
         
         .section-title {
             font-size: 2.2rem;
             margin-bottom: 60px;
             text-align: center;
             color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         
-        .section-title span { border-bottom: 3px solid var(--neon-purple); }
+        .section-title span { 
+            border-bottom: 3px solid var(--neon-purple);
+            padding-bottom: 10px;
+        }
 
+        /* --- 6. SKILLS SECTION (NEW) --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .skill-category h3 {
+            color: var(--neon-cyan);
+            margin-bottom: 20px;
+            font-family: var(--font-tech);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        /* --- 7. PROJECTS SECTION (UPDATED LINK) --- */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -167,20 +251,28 @@
             margin: 0 auto;
         }
 
+        /* Link pembungkus kartu */
+        .card-link {
+            text-decoration: none;
+            display: block;
+        }
+
         .card {
             background: var(--card-bg);
             border: 1px solid rgba(255,255,255,0.05);
             padding: 30px;
             border-radius: 15px;
-            transition: 0.4s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
-            backdrop-filter: blur(10px); /* Glassmorphism */
+            backdrop-filter: blur(10px);
+            height: 100%; /* Agar tinggi sama rata */
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--neon-purple);
-            box-shadow: 0 0 25px rgba(188, 19, 254, 0.2);
+        /* Hover effect pada kartu saat link di-hover */
+        .card-link:hover .card {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
         }
 
         .card h3 { 
@@ -190,9 +282,13 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            transition: 0.3s;
         }
+        
+        .card-link:hover .card h3 { color: var(--neon-cyan); }
 
-        .card h3 i { color: var(--neon-cyan); }
+        .card h3 i { color: var(--neon-purple); transition: 0.3s; }
+        .card-link:hover .card h3 i { color: var(--neon-cyan); transform: rotate(15deg); }
 
         .card p { 
             color: var(--text-dim); 
@@ -201,13 +297,7 @@
             margin-bottom: 20px;
         }
 
-        /* Tags Teknologi */
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; }
         .tech-tag {
             font-size: 0.75rem;
             font-family: var(--font-tech);
@@ -215,10 +305,10 @@
             padding: 5px 12px;
             color: var(--neon-cyan);
             border: 1px solid rgba(0, 243, 255, 0.2);
-            border-radius: 4px;
+            border-radius: 50px;
         }
 
-        /* --- 6. FOOTER --- */
+        /* --- Footer & Responsive --- */
         footer {
             text-align: center;
             padding: 40px;
@@ -226,31 +316,28 @@
             font-family: var(--font-tech);
             font-size: 0.8rem;
             color: var(--text-dim);
+            background: rgba(0,0,0,0.8);
         }
 
-        /* Animasi */
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink { 50% { border-color: transparent } }
-        
-        /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             nav { padding: 20px; flex-direction: column; gap: 15px; }
             .nav-links a { margin: 0 10px; }
             .section { padding: 60px 20px; }
+            .hero-buttons { flex-direction: column; width: 100%; }
+            .btn-glow { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-grid"></div>
+    <div id="particles-js"></div>
 
     <nav>
         <div class="logo">&lt;AR_DEV /&gt;</div>
         <div class="nav-links">
             <a href="#home">Home</a>
-            <a href="#projects">Portfolio</a>
-            <a href="mailto:emailanda@example.com">Contact</a>
+            <a href="#skills">Skills</a> <a href="#projects">Portfolio</a>
         </div>
     </nav>
 
@@ -258,80 +345,164 @@
         <img src="profil.jpg" alt="Achmad Rufi" class="profile-pic">
         
         <h1>Hi, I'm <span>Achmad Rufi</span></h1>
-        
         <div class="typing-text">Electrical Eng. Student | IoT & Power Systems</div>
         
-        <div style="margin-top: 20px;">
-            <a href="#projects" class="btn-glow">Lihat Proyek</a>
-            <a href="https://linkedin.com/in/username-anda" target="_blank" class="btn-glow" style="margin-left: 15px; border-color: var(--neon-purple); color: var(--neon-purple);">LinkedIn</a>
+        <div class="social-icons">
+            <a href="LINK_GITHUB_ANDA_DISINI" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="LINK_LINKEDIN_ANDA_DISINI" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="LINK_INSTAGRAM_ANDA_DISINI" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <div class="hero-buttons">
+            <a href="cv_achmad_rufi.pdf" download class="btn-glow btn-purple">
+                <i class="fas fa-file-download"></i> Download CV
+            </a>
+            <a href="#projects" class="btn-glow">
+                <i class="fas fa-project-diagram"></i> Lihat Proyek
+            </a>
+        </div>
+    </section>
+
+    <section id="skills" class="section section-alt">
+        <div class="section-title"><span>Technical Skills</span></div>
+        
+        <div class="skills-grid">
+            <div class="skill-category card">
+                <h3><i class="fas fa-code"></i> Programming</h3>
+                <div class="skill-list">
+                    <span class="tech-tag">C / C++ (Arduino)</span>
+                    <span class="tech-tag">Python (Data/AI)</span>
+                    <span class="tech-tag">HTML & CSS</span>
+                    <span class="tech-tag">MATLAB</span>
+                </div>
+            </div>
+            
+            <div class="skill-category card">
+                <h3><i class="fas fa-microchip"></i> Hardware & IoT</h3>
+                <div class="skill-list">
+                    <span class="tech-tag">ESP32 / ESP8266</span>
+                    <span class="tech-tag">Arduino Uno/Mega</span>
+                    <span class="tech-tag">Sensor Interfacing</span>
+                    <span class="tech-tag">MQTT Protocol</span>
+                    <span class="tech-tag">PCB Design</span>
+                </div>
+            </div>
+            
+            <div class="skill-category card">
+                <h3><i class="fas fa-bolt"></i> Engineering Tools</h3>
+                <div class="skill-list">
+                    <span class="tech-tag">ETAP (Power Sys)</span>
+                    <span class="tech-tag">Proteus / Multisim</span>
+                    <span class="tech-tag">AutoCAD Electrical</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="projects" class="section">
         <div class="section-title"><span>Selected Projects</span></div>
+        <p style="text-align: center; margin-bottom: 40px; color: var(--text-dim);">Klik pada kartu untuk melihat dokumentasi di GitHub.</p>
         
         <div class="project-grid">
             
-            <div class="card">
-                <h3><i class="fas fa-brain"></i> Short-term Load Forecasting</h3>
-                <p>Memprediksi beban listrik jangka pendek menggunakan metode Regresi Linear dan Python. Proyek ini bertujuan meningkatkan efisiensi distribusi energi.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Data Science</span>
-                    <span class="tech-tag">AI</span>
+            <a href="LINK_GITHUB_PROYEK_AI_DISINI" target="_blank" class="card-link">
+                <div class="card">
+                    <h3><i class="fas fa-brain"></i> Short-term Load Forecasting</h3>
+                    <p>Memprediksi beban listrik jangka pendek menggunakan metode Regresi Linear dan Python untuk efisiensi energi.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Data Science</span>
+                        <span class="tech-tag">AI</span>
+                    </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="card">
-                <h3><i class="fas fa-microchip"></i> Smart Home & IoT System</h3>
-                <p>Sistem monitoring dan kontrol jarak jauh berbasis mikrokontroler ESP32 dan modul GSM SIM800L. Terintegrasi dengan dashboard Blynk.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">ESP32</span>
-                    <span class="tech-tag">IoT / MQTT</span>
-                    <span class="tech-tag">C++</span>
+            <a href="LINK_GITHUB_PROYEK_IOT_DISINI" target="_blank" class="card-link">
+                <div class="card">
+                    <h3><i class="fas fa-microchip"></i> Smart Home & IoT System</h3>
+                    <p>Sistem monitoring dan kontrol jarak jauh berbasis ESP32, GSM SIM800L, dan integrasi dashboard Blynk.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">ESP32</span>
+                        <span class="tech-tag">IoT / MQTT</span>
+                        <span class="tech-tag">C++</span>
+                    </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="card">
-                <h3><i class="fas fa-bolt"></i> Power Flow Analysis</h3>
-                <p>Simulasi aliran daya dan analisis kestabilan sistem tenaga listrik menggunakan perangkat lunak ETAP. Studi kasus pada transmisi 3-fase.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">ETAP</span>
-                    <span class="tech-tag">Power System</span>
-                    <span class="tech-tag">Analysis</span>
+            <a href="LINK_GITHUB_PROYEK_ETAP_DISINI" target="_blank" class="card-link">
+                <div class="card">
+                    <h3><i class="fas fa-bolt"></i> Power Flow Analysis</h3>
+                    <p>Simulasi aliran daya dan analisis kestabilan sistem tenaga listrik 3-fase menggunakan software ETAP.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">ETAP</span>
+                        <span class="tech-tag">Power System</span>
+                    </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="card">
-                <h3><i class="fas fa-solar-panel"></i> Solar PV Integration</h3>
-                <p>Desain bangunan hemat energi dengan integrasi PLTS Rooftop (Off-grid) untuk studi kasus wilayah Lampung.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Renewable Energy</span>
-                    <span class="tech-tag">PV System</span>
-                    <span class="tech-tag">Design</span>
+            <a href="LINK_GITHUB_PROYEK_SOLAR_DISINI" target="_blank" class="card-link">
+                <div class="card">
+                    <h3><i class="fas fa-solar-panel"></i> Solar PV Integration</h3>
+                    <p>Desain bangunan hemat energi dengan integrasi PLTS Rooftop (Off-grid) untuk studi kasus wilayah Lampung.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Renewable Energy</span>
+                        <span class="tech-tag">Design</span>
+                    </div>
                 </div>
-            </div>
+            </a>
 
         </div>
     </section>
 
     <footer>
         <p>Designed & Built by Achmad Rufi © 2026</p>
-        <p style="margin-top:10px; font-size: 0.7rem; color: #555;">System.exit(0);</p>
+        <p style="margin-top:10px; font-size: 0.7rem; color: #555;">&lt;/&gt; with electro power</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
     <script>
-        // Efek Parallax (Background bergerak saat mouse digerakkan)
-        document.addEventListener('mousemove', (e) => {
-            const grid = document.querySelector('.bg-grid');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            grid.style.transform = `translate(-${x * 30}px, -${y * 30}px)`;
+        // 2. Konfigurasi Particles.js (Efek Jaringan Neon)
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00f3ff" }, /* Warna Cyan */
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#00f3ff", /* Warna Garis Penghubung */
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2, /* Kecepatan partikel */
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" }, /* Efek saat mouse mendekat */
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 180, "line_linked": { "opacity": 0.5 } }
+                }
+            },
+            "retina_detect": true
         });
 
-        // Animasi muncul perlahan (Fade In) saat di-scroll
-        const cards = document.querySelectorAll('.card');
+        // 3. Animasi Scroll Reveal (Kartu muncul saat di-scroll)
+        const cards = document.querySelectorAll('.card, .section-title');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
@@ -343,7 +514,8 @@
 
         cards.forEach(card => {
             card.style.opacity = 0;
-            card.style.transform = 'translateY(50px)'; // Posisi awal agak ke bawah
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             observer.observe(card);
         });
     </script>

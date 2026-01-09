@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CV Digital Saya</title>
+    <style>
+        /* Mengatur latar belakang halaman */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Mengatur kotak kartu CV */
+        .kartu-cv {
+            background-color: white;
+            width: 350px;
+            padding: 30px;
+            border-radius: 15px; /* Membuat sudut tumpul */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Efek bayangan */
+            text-align: center;
+        }
+
+        /* Mengatur Foto Profil (lingkaran) */
+        .foto {
+            width: 100px;
+            height: 100px;
+            background-color: #ddd;
+            border-radius: 50%; /* Membuat jadi bulat */
+            margin: 0 auto 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        /* Mengatur Tombol */
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Warna berubah saat mouse di atasnya */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="kartu-cv">
+        <div class="foto">👨‍🎓</div>
+        
+        <h1 id="nama">Nama Anda</h1>
+        <p>Mahasiswa Teknik Elektro</p>
+        <hr> <p style="color: grey; font-size: 14px;">
+            Hobi: Coding, IoT, dan Futsal.
+        </p>
+
+        <button onclick="sapaPengunjung()">Klik Saya!</button>
+    </div>
+
+    <script>
+        function sapaPengunjung() {
+            // Ini adalah logika sederhana
+            alert("Halo! Terima kasih sudah melihat CV saya.");
+            
+            // Mengubah teks nama menjadi warna merah
+            document.getElementById("nama").style.color = "red";
+        }
+    </script>
+
+</body>
+</html>

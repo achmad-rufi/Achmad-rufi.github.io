@@ -4,201 +4,306 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio Achmad Rufi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- CSS: Bagian Kosmetik --- */
+        /* --- TEMA DARK MODE & GLASSMORPHISM --- */
         :root {
-            --primary-color: #2c3e50; /* Biru Gelap Profesional */
-            --accent-color: #3498db;  /* Biru Terang */
-            --bg-color: #f4f7f6;
+            --bg-dark: #050511;       /* Background Gelap Pekat */
+            --glass-bg: rgba(255, 255, 255, 0.05); /* Efek Kaca Transparan */
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent-purple: #7b2cbf; /* Warna Ungu Neon sesuai gambar */
+            --accent-blue: #3a86ff;   /* Warna Biru Neon */
+            --text-main: #ffffff;
+            --text-muted: #a0a0b0;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            /* Efek background gradasi halus seperti luar angkasa */
+            background-image: radial-gradient(circle at 10% 20%, rgba(58, 134, 255, 0.1) 0%, transparent 20%),
+                              radial-gradient(circle at 90% 80%, rgba(123, 44, 191, 0.1) 0%, transparent 20%);
             margin: 0;
-            color: #333;
-            line-height: 1.6;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Container Utama */
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        /* Container Utama dengan Efek Kaca */
+        .glass-container {
+            width: 90%;
+            max-width: 1000px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px); /* Efek blur di belakang kaca */
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Header / Profil */
+        /* Hiasan Cahaya (Glow) di pojok */
+        .glow-circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: var(--accent-purple);
+            filter: blur(90px);
+            border-radius: 50%;
+            opacity: 0.4;
+            z-index: -1;
+        }
+        .glow-1 { top: -50px; left: -50px; }
+        .glow-2 { bottom: -50px; right: -50px; background: var(--accent-blue); }
+
+        /* Header Layout */
         header {
             text-align: center;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 30px;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
         }
 
         .profile-pic {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid var(--accent-color);
-            margin-bottom: 15px;
+            border: 3px solid rgba(255,255,255,0.2);
+            padding: 5px;
+            /* Efek bayangan bersinar */
+            box-shadow: 0 0 30px rgba(123, 44, 191, 0.5); 
         }
 
         h1 {
-            margin: 10px 0;
-            color: var(--primary-color);
-            font-size: 2.5em;
+            font-size: 3em;
+            margin: 20px 0 10px 0;
+            background: linear-gradient(90deg, #fff, #a0a0b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
-            font-size: 1.2em;
-            color: #7f8c8d;
-            font-weight: 300;
-        }
-
-        /* Social Media Icons */
-        .social-links {
-            margin-top: 15px;
-        }
-        .social-links a {
-            color: var(--primary-color);
-            font-size: 1.5em;
-            margin: 0 10px;
-            transition: 0.3s;
-        }
-        .social-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Sections (About, Skills, dll) */
-        .section-title {
-            color: var(--primary-color);
-            border-left: 5px solid var(--accent-color);
-            padding-left: 15px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        /* Skill Tags */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .skill-tag {
-            background: #e1ecf4;
-            color: #2c3e50;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
+            color: var(--accent-blue);
+            font-size: 1.1em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             font-weight: 600;
         }
 
-        /* Project Cards */
-        .project-card {
-            background: white;
-            border: 1px solid #eee;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            transition: 0.3s;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-color: var(--accent-color);
+        /* --- GRID LAYOUT UNTUK PROYEK --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
-        /* Tombol Kontak */
-        .btn-contact {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
+        /* Kartu Proyek (Card) */
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-purple);
+            box-shadow: 0 10px 30px rgba(123, 44, 191, 0.2);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        /* Tag Skill/Teknologi */
+        .tags {
             margin-top: 20px;
-            transition: 0.3s;
-        }
-        .btn-contact:hover {
-            background-color: #2980b9;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        /* Responsive Mobile */
-        @media (max-width: 600px) {
-            .container {
-                margin: 10px;
-                padding: 20px;
+        .tag {
+            background: rgba(123, 44, 191, 0.2);
+            color: #d0d0ff;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.75em;
+            border: 1px solid rgba(123, 44, 191, 0.3);
+        }
+
+        /* --- TOMBOL CANGGIH DENGAN ANIMASI RIPPLE --- */
+        .btn-glow {
+            position: relative;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            overflow: hidden; /* Penting untuk efek ripple */
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 30px;
+            box-shadow: 0 5px 20px rgba(123, 44, 191, 0.4);
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 10px 40px rgba(58, 134, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* Animasi Ripple (Gelombang saat klik) */
+        .ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-anim 0.6s linear;
+            pointer-events: none; /* Agar tidak mengganggu klik */
+        }
+
+        @keyframes ripple-anim {
+            to {
+                transform: scale(4);
+                opacity: 0;
             }
-            h1 { font-size: 1.8em; }
+        }
+
+        /* Social Icons */
+        .social-bar {
+            margin-top: 20px;
+            background: rgba(255,255,255,0.05);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+        }
+        
+        .social-bar a {
+            color: var(--text-muted);
+            margin: 0 15px;
+            font-size: 1.2em;
+            transition: 0.3s;
+        }
+        
+        .social-bar a:hover {
+            color: white;
+            text-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        @media (max-width: 768px) {
+            .glass-container { padding: 30px 20px; width: 95%; }
+            h1 { font-size: 2em; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="glass-container">
+        <div class="glow-circle glow-1"></div>
+        <div class="glow-circle glow-2"></div>
+
         <header>
-            <img src="https://via.placeholder.com/150" alt="Foto Profil" class="profile-pic">
-            
+            <img src="profil.jpg" alt="Achmad Rufi" class="profile-pic">
             <h1>Achmad Rufi</h1>
-            <p class="subtitle">Mahasiswa Teknik Elektro | IoT Enthusiast</p>
+            <div class="subtitle">Future Electrical Engineer</div>
             
-            <div class="social-links">
+            <div class="social-bar">
                 <a href="#"><i class="fab fa-github"></i></a>
                 <a href="#"><i class="fab fa-linkedin"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
         </header>
 
-        <section>
-            <h2 class="section-title">Tentang Saya</h2>
-            <p>
-                Halo! Saya adalah mahasiswa Teknik Elektro yang memiliki ketertarikan mendalam pada dunia 
-                <strong>Internet of Things (IoT)</strong> dan <strong>Web Development</strong>. 
-                Saya suka memecahkan masalah dengan menggabungkan perangkat keras (hardware) dan perangkat lunak (software).
-                Saat ini sedang fokus belajar membuat sistem monitoring berbasis web.
-            </p>
-        </section>
-
-        <section>
-            <h2 class="section-title">Keahlian</h2>
-            <div class="skills-container">
-                <span class="skill-tag">C++ / Arduino</span>
-                <span class="skill-tag">HTML & CSS</span>
-                <span class="skill-tag">Circuit Design</span>
-                <span class="skill-tag">ESP32 / IoT</span>
-                <span class="skill-tag">MATLAB</span>
-                <span class="skill-tag">Git & GitHub</span>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title">Proyek Kuliah</h2>
-            
-            <div class="project-card">
-                <h3>🏠 Smart Home Prototype</h3>
-                <p>Sistem pengendali lampu otomatis menggunakan ESP8266 dan aplikasi Blynk. Dapat dikontrol jarak jauh via internet.</p>
+        <h2 style="color:white; margin-bottom:20px; border-left: 4px solid var(--accent-purple); padding-left:15px;">Selected Projects</h2>
+        
+        <div class="grid-container">
+            <div class="card">
+                <h3><i class="fas fa-microchip" style="color: #a29bfe;"></i> Smart Home IoT</h3>
+                <p>Sistem kontrol rumah pintar berbasis ESP32. Menggunakan protokol MQTT untuk komunikasi real-time.</p>
+                <div class="tags">
+                    <span class="tag">ESP32</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">MQTT</span>
+                </div>
             </div>
 
-            <div class="project-card">
-                <h3>⚡ Analisis Sistem Tenaga</h3>
-                <p>Simulasi aliran daya (Power Flow) pada jaringan distribusi menggunakan software ETAP dan perhitungan manual.</p>
+            <div class="card">
+                <h3><i class="fas fa-bolt" style="color: #74b9ff;"></i> Power Flow Analysis</h3>
+                <p>Simulasi aliran daya sistem distribusi 20kV menggunakan software ETAP dan validasi Python.</p>
+                <div class="tags">
+                    <span class="tag">ETAP</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Power Sys</span>
+                </div>
             </div>
-        </section>
 
-        <section style="text-align: center; margin-top: 50px;">
-            <h3>Tertarik bekerja sama?</h3>
-            <p>Silakan hubungi saya melalui email.</p>
-            <a href="mailto:emailanda@example.com" class="btn-contact">Kirim Email</a>
-        </section>
+            <div class="card">
+                <h3><i class="fas fa-robot" style="color: #ff7675;"></i> Autonomous Line Follower</h3>
+                <p>Robot pengikut garis dengan algoritma PID Controller untuk pergerakan halus.</p>
+                <div class="tags">
+                    <span class="tag">Arduino</span>
+                    <span class="tag">PID Control</span>
+                    <span class="tag">Robotics</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <p style="color: var(--text-muted);">Tertarik berkolaborasi?</p>
+            <a href="mailto:emailanda@example.com" class="btn-glow" onclick="createRipple(event)">
+                <i class="fas fa-paper-plane"></i> Hubungi Saya
+            </a>
+        </div>
     </div>
+
+    <script>
+        function createRipple(event) {
+            const button = event.currentTarget;
+            const circle = document.createElement("span");
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+
+            // Mengatur posisi lingkaran ripple tepat di titik klik mouse
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
+            circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
+            circle.classList.add("ripple");
+
+            // Membuang elemen ripple lama (agar tidak menumpuk di memori)
+            const ripple = button.getElementsByClassName("ripple")[0];
+            if (ripple) {
+                ripple.remove();
+            }
+
+            button.appendChild(circle);
+        }
+    </script>
 
 </body>
 </html>

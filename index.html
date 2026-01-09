@@ -1,83 +1,204 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>CV Digital Saya</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Achmad Rufi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        /* Mengatur latar belakang halaman */
+        /* --- CSS: Bagian Kosmetik --- */
+        :root {
+            --primary-color: #2c3e50; /* Biru Gelap Profesional */
+            --accent-color: #3498db;  /* Biru Terang */
+            --bg-color: #f4f7f6;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
             margin: 0;
+            color: #333;
+            line-height: 1.6;
         }
 
-        /* Mengatur kotak kartu CV */
-        .kartu-cv {
-            background-color: white;
-            width: 350px;
-            padding: 30px;
-            border-radius: 15px; /* Membuat sudut tumpul */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Efek bayangan */
+        /* Container Utama */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Header / Profil */
+        header {
             text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
         }
 
-        /* Mengatur Foto Profil (lingkaran) */
-        .foto {
-            width: 100px;
-            height: 100px;
-            background-color: #ddd;
-            border-radius: 50%; /* Membuat jadi bulat */
-            margin: 0 auto 15px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+            margin-bottom: 15px;
         }
 
-        /* Mengatur Tombol */
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
+        h1 {
+            margin: 10px 0;
+            color: var(--primary-color);
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        /* Social Media Icons */
+        .social-links {
             margin-top: 15px;
         }
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
 
-        button:hover {
-            background-color: #0056b3; /* Warna berubah saat mouse di atasnya */
+        /* Sections (About, Skills, dll) */
+        .section-title {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* Skill Tags */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-tag {
+            background: #e1ecf4;
+            color: #2c3e50;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: white;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--accent-color);
+        }
+
+        /* Tombol Kontak */
+        .btn-contact {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .btn-contact:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 20px;
+            }
+            h1 { font-size: 1.8em; }
         }
     </style>
 </head>
-
 <body>
 
-    <div class="kartu-cv">
-        <div class="foto">👨‍🎓</div>
-        
-        <h1 id="nama">Nama Anda</h1>
-        <p>Mahasiswa Teknik Elektro</p>
-        <hr> <p style="color: grey; font-size: 14px;">
-            Hobi: Coding, IoT, dan Futsal.
-        </p>
-
-        <button onclick="sapaPengunjung()">Klik Saya!</button>
-    </div>
-
-    <script>
-        function sapaPengunjung() {
-            // Ini adalah logika sederhana
-            alert("Halo! Terima kasih sudah melihat CV saya.");
+    <div class="container">
+        <header>
+            <img src="https://via.placeholder.com/150" alt="Foto Profil" class="profile-pic">
             
-            // Mengubah teks nama menjadi warna merah
-            document.getElementById("nama").style.color = "red";
-        }
-    </script>
+            <h1>Achmad Rufi</h1>
+            <p class="subtitle">Mahasiswa Teknik Elektro | IoT Enthusiast</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </header>
+
+        <section>
+            <h2 class="section-title">Tentang Saya</h2>
+            <p>
+                Halo! Saya adalah mahasiswa Teknik Elektro yang memiliki ketertarikan mendalam pada dunia 
+                <strong>Internet of Things (IoT)</strong> dan <strong>Web Development</strong>. 
+                Saya suka memecahkan masalah dengan menggabungkan perangkat keras (hardware) dan perangkat lunak (software).
+                Saat ini sedang fokus belajar membuat sistem monitoring berbasis web.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="section-title">Keahlian</h2>
+            <div class="skills-container">
+                <span class="skill-tag">C++ / Arduino</span>
+                <span class="skill-tag">HTML & CSS</span>
+                <span class="skill-tag">Circuit Design</span>
+                <span class="skill-tag">ESP32 / IoT</span>
+                <span class="skill-tag">MATLAB</span>
+                <span class="skill-tag">Git & GitHub</span>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Proyek Kuliah</h2>
+            
+            <div class="project-card">
+                <h3>🏠 Smart Home Prototype</h3>
+                <p>Sistem pengendali lampu otomatis menggunakan ESP8266 dan aplikasi Blynk. Dapat dikontrol jarak jauh via internet.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>⚡ Analisis Sistem Tenaga</h3>
+                <p>Simulasi aliran daya (Power Flow) pada jaringan distribusi menggunakan software ETAP dan perhitungan manual.</p>
+            </div>
+        </section>
+
+        <section style="text-align: center; margin-top: 50px;">
+            <h3>Tertarik bekerja sama?</h3>
+            <p>Silakan hubungi saya melalui email.</p>
+            <a href="mailto:emailanda@example.com" class="btn-contact">Kirim Email</a>
+        </section>
+    </div>
 
 </body>
 </html>
